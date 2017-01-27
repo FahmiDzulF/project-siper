@@ -40,15 +40,16 @@ class Web extends CI_Controller{
 		/*echo "<pre>";
 		var_dump($this->input->post());
 		echo "</pre>";*/
-		$this->load('m_petugas');
+		$this->load->model('m_petugas');
 
-
-		$checkPetugas = $this->m_petugas->checkPetugas();
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
+		$petugas  = $this->input->post('petugas');
+
 
 		var_dump($username);
 		var_dump($password);
+		var_dump($petugas);
 	}
 
 	}
