@@ -18,6 +18,14 @@ class Web extends CI_Controller{
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+		 public function __construct()
+		 {
+		 	parent:: __construct();
+			$this->load->model(array('m_petugas'));
+			if($this->session->userdata('username')){
+			}
+		 }
+
 
 	public function index()
 	{
@@ -37,19 +45,29 @@ class Web extends CI_Controller{
 
 	public function proses()
 	{
-		/*echo "<pre>";
-		var_dump($this->input->post());
-		echo "</pre>";*/
-		$this->load->model('m_petugas');
 
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$petugas  = $this->input->post('petugas');
+		$this->load->library('form_validation');
+	        $this->form_validation->set_rules('username','Username','required');
+	        $this->form_validation->set_rules('password','password','required');
 
+	        if($this->form_validation->run()==FALSE){
+	            $this->session->set_flashdata('message','Username dan password harus diisi');
+	            redirect('web');
+	        }else{
+	            $username=$this->input->post('username');
+	            $password=$this->input->post('password');
+	            $cek=$this->m_petugas->cek($username,md5($password));
+	            if($cek->num_rows()>0){
 
-		var_dump($username);
-		var_dump($password);
-		var_dump($petugas);
-	}
+									/*Jika Login Berhasil*/
+	                $this->session->set_userdata('username',$username);
+	                redirect('dashboard');
 
+	            }else{
+	                /*Jika login gagal*/
+	                $this->session->set_flashdata('message','Username atau password salah');
+	                redirect('web');
+	            }
+	        }
+	    }
 	}
