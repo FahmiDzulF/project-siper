@@ -23,7 +23,7 @@ class Web extends CI_Controller{
 		 	parent:: __construct();
 			$this->load->model(array('m_petugas'));
 			if($this->session->userdata('username')){
-			}
+					}
 		 }
 
 
