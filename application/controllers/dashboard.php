@@ -85,6 +85,6 @@ class Dashboard extends CI_Controller{
 
     function logout(){
         $this->session->unset_userdata('username');
-        redirect('');
+        redirect('web');
     }
 }

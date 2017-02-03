@@ -9,14 +9,14 @@
             <input type="text" name="user" value="<?php echo $petugas['user'];?>" readonly="readonly" class="form-control">
         </div>
     </div>
-    
+
     <div class="form-group">
         <label class="col-lg-3 control-label">Password</label>
         <div class="col-lg-5">
             <input type="password" name="password" value="<?php echo $petugas['password'];?>" class="form-control">
         </div>
     </div>
-    
+
     <div class="form-group well">
         <div class="col-lg-5">
             <button id="simpan" class="btn btn-primary"><i class="glyphicon glyphicon-saved"></i> Simpan</button>

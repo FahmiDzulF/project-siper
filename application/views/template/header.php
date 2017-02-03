@@ -1,5 +1,4 @@
-<!--<img src="<?php echo base_url('assets/img/3.jpg');?>" height="140px" width="100%">-->
-            <!-- Static navbar -->
+<img src="<?php echo base_url('assets/img/perpus.jpeg');?>" height="450" width="100%" />
             <div class="navbar navbar-default">
                 <div class="container">
                 <div class="navbar-header">
