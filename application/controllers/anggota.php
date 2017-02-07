@@ -122,4 +122,40 @@ class Anggota extends CI_Controller{
           $this->template->display('anggota/tambah',$data);
       }
   }
+
+
+  function hapus(){
+    $kode=$this->input->post('kode');
+    $detail=$this->m_anggota->cek($kode)->result();
+    foreach($detail as $det):
+      unlink("assets/img/anggota/" .$det->image);
+    endforeach;
+      $this->m_anggota->hapus($kode);
+    }
+
+    function cari(){
+      $data['title']="Pencarian";
+      $cari=$this->input->post('cari');
+      $cek=$this->m_anggota->cari($cari);
+
+      if($cek->num_rows()>0){
+        $data['message'] = "";
+        $data['anggota'] =$cek->result();
+        $this->template->display('anggota/cari', $data);
+
+      }else{
+        $data['message']="<div class='alert alert-succes'>Data tidak ditemukan</div>";
+        $data['anggota']=$cek->result();
+        $this->template->display('anggota/cari', $data);
+      }
+}
+
+  function _set_rules(){
+    $this->form_validation->set_rules('nis','NIS','required|max_length[10]');
+          $this->form_validation->set_rules('nama','Nama','required|max_length[50]');
+          $this->form_validation->set_rules('jk','Jenis Kelamin','required|max_length[2]');
+          $this->form_validation->set_rules('ttl','Tanggal Lahir','required');
+          $this->form_validation->set_rules('kelas','Kelas','required|max_length[10]');
+          $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>","</div>");
+      }
 }
