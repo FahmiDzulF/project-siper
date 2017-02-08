@@ -37,6 +37,9 @@ class M_anggota extends CI_Model{
     $this->db->where($this->table);
   }
 
+  function cari($cari){
+    $this->db->like($this->primary, $cari);
+    $this->db->or_like("nama", $cari);
+    return $this->db->get($this->table);
+  }
 }
-
-?>

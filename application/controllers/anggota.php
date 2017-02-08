@@ -158,4 +158,4 @@ class Anggota extends CI_Controller{
           $this->form_validation->set_rules('kelas','Kelas','required|max_length[10]');
           $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>","</div>");
       }
-}
+  }
