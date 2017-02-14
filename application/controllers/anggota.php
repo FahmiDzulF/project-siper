@@ -46,7 +46,7 @@ class Anggota extends CI_Controller{
           $nis=$this->input->post('nis');
           //konfigurasi upload image
           $config['upload_path'] = './assets/img/anggota/';
-    $config['allowed_types'] = 'gif|jpg|png';
+    $config['allowed_types'] ='jpeg|jpg|png|bmp';
     $config['max_size']	= '1000';
     $config['max_width']  = '2000';
     $config['max_height']  = '1024';
