@@ -42,84 +42,45 @@ class Buku extends CI_Controller{
 
       function tambah(){
         $data['title']="Tambah Buku";
-        $this->set_rules();
+        $this->_set_rules();
         if($this->form_validation->run()==true){
-          $kode=$this->input->post('kode');
-          $cek=$this->m_buku->cek($kode);
+            $kode=$this->input->post('kode');
+            $cek=$this->m_buku->cek($kode);
+            if($cek->num_rows()>0){
+                $data['message']="<div class='alert alert-danger'>Kode Buku sudah ada</div>";
+                $this->template->display('buku/tambah',$data);
+            }else{
 
-          if($cek->num_rows()>0){
-            $data['message']="<div class='alert alert-danger'>Kode Buku suda ada</div>";
-            $this->template->display('buku/tambah',$data);
-          }else{
+                //setting konfiguras upload image
+                $config['upload_path'] = './assets/img/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']	= '1000';
+                $config['max_width']  = '2000';
+                $config['max_height']  = '1024';
 
-            $config['upload_path'] = './assets/img/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']	= '1000';
-            $config['max_width']  = '2000';
-            $config['max_height']  = '1024';
-
-                            $this->upload->initialize($config);
-                            if(!$this->upload->do_upload('gambar')){
-                                $gambar="";
-                            }else{
-                                $gambar=$this->upload->file_name;
-                            }
-
-                            $info=array(
-                                'kode_buku'=>$this->input->post('kode'),
-                                'judul'=>$this->input->post('judul'),
-                                'pengarang'=>$this->input->post('pengarang'),
-                                'klasifikasi'=>$this->input->post('klasifikasi'),
-                                'image'=>$gambar
-                            );
-                            $this->m_buku->simpan($info);
-                            redirect('buku/index/add_success');
-
-                        }
-                    }else{
-                        $data['message']="";
-                        $this->template->display('buku/tambah',$data);
-                    }
+                $this->upload->initialize($config);
+                if(!$this->upload->do_upload('gambar')){
+                    $gambar="";
+                }else{
+                    $gambar=$this->upload->file_name;
                 }
 
-                function edit($id){
-                  $data['title']="Edit data Buku";
-                  $this->_set_rules();
-                  if($this->form_validation->run()==true){
-                      $kode=$this->input->post('kode');
+                $info=array(
+                    'kode_buku'=>$this->input->post('kode'),
+                    'judul'=>$this->input->post('judul'),
+                    'pengarang'=>$this->input->post('pengarang'),
+                    'klasifikasi'=>$this->input->post('klasifikasi'),
+                    'image'=>$gambar
+                );
+                $this->m_buku->simpan($info);
+                redirect('buku/index/add_success');
 
-                      //setting konfiguras upload image
-                      $config['upload_path'] = './assets/img/';
-          	    $config['allowed_types'] = 'gif|jpg|png';
-                      $config['max_size']	= '1000';
-          	    $config['max_width']  = '2000';
-          	    $config['max_height']  = '1024';
-
-                      $this->upload->initialize($config);
-                      if(!$this->upload->do_upload('gambar')){
-                          $gambar="";
-                      }else{
-                          $gambar=$this->upload->file_name;
-                      }
-
-                      $info=array(
-                          'judul'=>$this->input->post('judul'),
-                          'pengarang'=>$this->input->post('pengarang'),
-                          'klasifikasi'=>$this->input->post('klasifikasi'),
-                          'image'=>$gambar
-                      );
-                      $this->m_buku->update($kode,$info);
-
-                      $data['buku']=$this->m_buku->cek($id)->row_array();
-                      $data['message']="<div class='alert alert-success'>Data berhasil diupdate</div>";
-                      $this->template->display('buku/edit',$data);
-                  }else{
-                      $data['message']="";
-                      $data['buku']=$this->m_buku->cek($id)->row_array();
-                      $this->template->display('buku/edit',$data);
-                  }
-              }
-
+            }
+        }else{
+            $data['message']="";
+            $this->template->display('buku/tambah',$data);
+        }
+    }
               function hapus(){
                   $kode=$this->input->post('kode');
                   $detail=$this->m_buku->cek($kode)->result();
