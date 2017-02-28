@@ -16,7 +16,6 @@
 </div>
 <a href="<?php echo site_url('anggota/tambah');?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Tambah</a>
 <hr>
-<?php echo $message;?>
 <Table class="table table-striped">
     <thead>
         <tr>

@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CRUD Buku</title>
   </head>
   <body>
     <legend>Tambah Data Buku</legend>

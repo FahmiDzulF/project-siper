@@ -38,8 +38,8 @@ class M_buku extends CI_Model{
     }
 
     function cari($cari){
-      $this->db->like($this->primary, $cari);
-      $this->db->or_like("judul", $cari);
-      return $this->db->get($this->table);
+        $this->db->like($this->primary,$cari);
+        $this->db->or_like("judul",$cari);
+        return $this->db->get($this->table);
     }
 }

@@ -26,14 +26,14 @@
     $(function(){
         $(".hapus").click(function(){
             var kode=$(this).attr("kode");
-            
+
             $("#idhapus").val(kode);
             $("#myModal").modal("show");
         });
-        
+
         $("#konfirmasi").click(function(){
             var kode=$("#idhapus").val();
-            
+
             $.ajax({
                 url:"<?php echo site_url('dashboard/hapus');?>",
                 type:"POST",

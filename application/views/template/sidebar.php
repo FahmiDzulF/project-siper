@@ -1,4 +1,3 @@
-<div class="panel-group" id="accordion">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -11,7 +10,7 @@
                                         <table class="table">
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-pencil text-primary"></span> <a href="<?php echo site_url('anggota');?>">Anggota</a>
+                                                    <span class="glyphicon glyphicon-pencil text-primary-danger"></span> <a href="<?php echo site_url('anggota');?>">Anggota</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -28,6 +27,24 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                                                        </span> Transaksi</a>
+                                                    </h4>
+                                                </div>
+                                                    <div class="panel-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="glyphicon glyphicon-saved"></span><a href="<?php echo site_url('peminjaman');?>"> Peminjaman</a></span>
+                                                                </td>
+                                                          </tr>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -37,4 +54,3 @@
                         </h4>
                     </div>
                 </div>
-</div>

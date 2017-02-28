@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CRUD Buku</title>
 
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/styles2.css');?>" rel="stylesheet">
@@ -25,7 +24,6 @@
     </form>
   </div>
       <a href="<?php echo site_url('buku/tambah');?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Tambah</a>
-      <hr>
       <?php echo $message;?>
       <Table class="table table-striped">
         <thead>
