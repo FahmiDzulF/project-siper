@@ -59,12 +59,24 @@
         <tr>
           <td>No.</td>
           <td>No.</td>
-                            <td>Image</td>
-                            <td>Nis</td>
-                            <td>Nama</td>
-                            <td>Tanggal Lahir</td>
-                            <td>Kelas</td>
-                        </tr>
+          <td>Image</td>
+          <td>Nis</td>
+          <td>Nama</td>
+          <td>Tanggal Lahir</td>
+          <td>Kelas</td>
+        </tr>
                     </thead>
- </body>
-</html>
+                    <?php $no=0; foreach($anggota as $row): $no++;?>
+                      <tr>
+                        <td><?php echo $no;?></td>
+                        <td><img src="<?php echo base_url('assets/img/anggota'.$row->image);?>" width="100px" height="100px"></td>
+                        <td><?php echo $row->nis;?></td>
+                        <td><?php echo $row->nama;?></td>
+                        <td><?php echo $row->ttl;?></td>
+                        <td><?php echo $row->kelas;?></td>
+                      </tr>
+                    <?php endforeach;?>
+                  </table>
+                </div>
+              </div>
+            </div>

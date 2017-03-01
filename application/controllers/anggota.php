@@ -44,19 +44,19 @@ class Anggota extends CI_Controller{
       $this->_set_rules();
       if($this->form_validation->run()==true){
           $nis=$this->input->post('nis');
-          //konfigurasi upload image
-          $config['upload_path'] = './assets/img/anggota/';
-    $config['allowed_types'] ='jpeg|jpg|png|bmp';
-    $config['max_size']	= '1000';
-    $config['max_width']  = '2000';
-    $config['max_height']  = '1024';
+          //setting konfiguras upload image
+                $config['upload_path'] = './assets/img/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '2000';
+		$config['max_height']  = '1024';
 
-          $this->upload->initialize($config);
-          if(!$this->upload->do_upload('gambar')){
-              $gambar="";
-          }else{
-              $gambar=$this->upload->file_name;
-          }
+                $this->upload->initialize($config);
+                if(!$this->upload->do_upload('gambar')){
+                    $gambar="";
+                }else{
+                    $gambar=$this->upload->file_name;
+                }
 
           $info=array(
               'nama'=>$this->input->post('nama'),

@@ -14,7 +14,8 @@
   </head>
   <body>
     <div class="navbar navbar-default navbar">
-      <div class="gambar"></div>
+      <div class="gambar">
+      </div>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
